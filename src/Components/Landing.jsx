@@ -20,7 +20,7 @@ const LandingSection = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white p-8 py-2">
+    <div className=" bg-black text-white p-8 py-2">
       {/* Header Section */}
       <div className="text-center mb-16">
         <div className="text-cyan-400 uppercase tracking-wider text-sm mb-4 text-bold font-bold">

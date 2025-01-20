@@ -29,8 +29,7 @@ const HeroSection = () => {
         </h1>
         
         <p className="text-gray-400 text-xl md:text-2xl mb-12 max-w-2xl mx-auto">
-          Give yourself an upgrade with our inspiring online courses 
-          and join a global community of learners
+          Give yourself an upgrade with our inspiring online courses <br />and join a global community of learners
         </p>
         
         <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-8 rounded-full text-lg transition-colors">
