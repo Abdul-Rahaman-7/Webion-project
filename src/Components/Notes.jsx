@@ -2,7 +2,7 @@ import React from 'react';
 
 const DevelopmentGuides = () => {
   return (
-    <div className="min-h-screen bg-[#0a192f] p-8 text-white mt-20">
+    <div className="min-h-screen bg-[#0a192f] p-8 text-white pt-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Front-end Guide */}
         <div className="bg-black p-6 rounded-lg shadow-lg">
