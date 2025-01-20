@@ -1,194 +1,187 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-const FormInterface = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    role: '',
-    email: '',
-    phoneNumber: '',
-    course: '',
-    status: 'Unplaced'
-  });
-  
+const initialForm = {
+  name: "",
+  role: "",
+  email: "",
+  phone: "",
+  course: "",
+  status: "Unplaced",
+};
 
-  const [users, setUsers] = useState([
+function Form({ details, setDetails }) {
+  const [form, setForm] = useState(initialForm);
 
-    {
-      name: 'Srivasan',
-      role: 'Developer',
-      email: 'srivasan@gmail.com',
-      phoneNumber: '123-456-7890',
-      course: 'React Basics',
-      status: 'Placed'
-    },
-    {
-      name: 'Mohanapriya',
-      role: 'Designer',
-      email: 'mohanapriya@gmail.com',
-      phoneNumber: '098-765-4321',
-      course: 'UI/UX Design',
-      status: 'Unplaced'
-    },
-    {
-      name: 'kasi',
-      role: 'Developer',
-      email: 'kasi@gmail.com',
-      phoneNumber: '123-456-7890',
-      course: 'React Basics',
-      status: 'Placed'
-    },
-    {
-      name: 'anaya',
-      role: 'Designer',
-      email: 'anaya@gmail.com',
-      phoneNumber: '098-765-4321',
-      course: 'UI/UX Design',
-      status: 'Unplaced'
-    },
-    {
-      name: 'priya',
-      role: 'Designer',
-      email: 'priya@gmail.com',
-      phoneNumber: '098-765-4321',
-      course: 'UI/UX Design',
-      status: 'Unplaced'
-    },
-    {
-      name: 'Mohan',
-      role: 'Designer',
-      email: 'mohan@gmail.com',
-      phoneNumber: '098-765-4321',
-      course: 'UI/UX Design',
-      status: 'Unplaced'
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+  };
 
-  ]);
+  console.log(details.length);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setUsers([...users, formData]);
-    setFormData({
-      name: '',
-      role: '',
-      email: '',
-      phoneNumber: '',
-      course: '',
-      status: 'Unplaced'
-    });
+    setDetails([...details, form]);
+    console.log("Form :", details);
+    setForm(initialForm);
   };
 
-  const handleDelete = (email) => {
-    setUsers(users.filter(user => user.email !== email));
+  const handleDelete = (index) => {
+    const updatedDetails = details.filter((_, i) => i !== index);
+    setDetails(updatedDetails);
   };
 
   return (
-    <div className="min-h-screen bg-black p-8">
-      <div className="max-w-6xl mx-auto"> 
-        <h1 className="text-2xl font-bold mb-8 text-[#ccff00] text-center"> Fill this Form </h1>
-        <form onSubmit={handleSubmit} className="mb-12">
-          <div className="grid grid-cols-2 gap-6 mb-6">
+    <>
+      {/* Form Section */}
+      <div className="bg-black text-[#94ff08d3] py-10 px-5">
+        <div className="max-w-4xl mx-auto bg-black text-white rounded-lg p-8">
+          <h1 className="text-3xl font-bold text-center mb-6" style={{ color: '#d4ff00' }}>Fill This Form</h1>
+          <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
+            {/* Name */}
             <div>
-              <label className="block text-[#ccff00] mb-2">Name:</label>
+              <label htmlFor="name" className="block text-lg font-bold" style={{ color: '#d4ff00' }}>
+                Name:
+              </label>
               <input
                 type="text"
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
+                id="name"
+                name="name"
                 placeholder="Enter your name"
-                className="w-full p-2 rounded border border-gray-700 bg-white"
+                value={form.name}
+                onChange={handleChange}
+                className="w-full bg-gray-100 text-black rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 outline-none"
               />
             </div>
-            
+            {/* Role */}
             <div>
-              <label className="block text-[#ccff00] mb-2">Role:</label>
+              <label htmlFor="role" className="block text-lg font-bold" style={{ color: '#d4ff00' }}>
+                Role:
+              </label>
               <input
                 type="text"
-                value={formData.role}
-                onChange={(e) => setFormData({...formData, role: e.target.value})}
+                id="role"
+                name="role"
                 placeholder="Enter your role"
-                className="w-full p-2 rounded border border-gray-700 bg-white"
+                value={form.role}
+                onChange={handleChange}
+                className="w-full bg-gray-100 text-black rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 outline-none"
               />
             </div>
-            
+            {/* Email */}
             <div>
-              <label className="block text-[#ccff00] mb-2">Email:</label>
+              <label htmlFor="email" className="block text-lg font-bold" style={{ color: '#d4ff00' }}>
+                Email:
+              </label>
               <input
                 type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                id="email"
+                name="email"
                 placeholder="Enter your email"
-                className="w-full p-2 rounded border border-gray-700 bg-white"
+                value={form.email}
+                onChange={handleChange}
+                className="w-full bg-gray-100 text-black rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 outline-none"
               />
             </div>
-            
+            {/* Phone */}
             <div>
-              <label className="block text-[#ccff00] mb-2">Phone Number:</label>
+              <label htmlFor="phone" className="block text-lg font-bold" style={{ color: '#d4ff00' }}>
+                Phone Number:
+              </label>
               <input
                 type="tel"
-                value={formData.phoneNumber}
-                onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
+                id="phone"
+                name="phone"
                 placeholder="Enter your phone number"
-                className="w-full p-2 rounded border border-gray-700 bg-white"
+                value={form.phone}
+                onChange={handleChange}
+                className="w-full bg-gray-100 text-black rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 outline-none"
               />
             </div>
-            
+            {/* Course */}
             <div>
-              <label className="block text-[#ccff00] mb-2">Course:</label>
+              <label htmlFor="course" className="block text-lg font-bold" style={{ color: '#d4ff00' }}>
+                Course:
+              </label>
               <select
-                value={formData.course}
-                onChange={(e) => setFormData({...formData, course: e.target.value})}
-                className="w-full p-2 rounded border border-gray-700 bg-white"
+                id="course"
+                name="course"
+                value={form.course}
+                onChange={handleChange}
+                className="w-full bg-gray-100 text-black rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 outline-none"
               >
                 <option value="">Select a course</option>
-                <option value="React Basics">React Basics</option>
-                <option value="UI/UX Design">UI/UX Design</option>
-                <option value="Web Development">Web Development</option>
+                <option value="React">React Basics</option>
+                <option value="UI/UX Designer">UI/UX Designer</option>
+                <option value="JavaScript Fundamentals">JavaScript Fundamentals</option>
+                <option value="Advance CSS">Advance CSS</option>
+                <option value="Backend Development">Backend Development</option>
               </select>
             </div>
-            
+            {/* Status */}
             <div>
-              <label className="block text-[#ccff00] mb-2">Status:</label>
+              <label htmlFor="status" className="block text-lg font-bold" style={{ color: '#d4ff00' }}>
+                Status:
+              </label>
               <select
-                value={formData.status}
-                onChange={(e) => setFormData({...formData, status: e.target.value})}
-                className="w-full p-2 rounded border border-gray-700 bg-white"
+                id="status"
+                name="status"
+                value={form.status}
+                onChange={handleChange}
+                className="w-full bg-gray-100 text-black rounded-lg p-3 mt-2 focus:ring-2 focus:ring-green-500 outline-none"
               >
                 <option value="Unplaced">Unplaced</option>
                 <option value="Placed">Placed</option>
               </select>
             </div>
-          </div>
 
-          <div className="flex justify-end">
-            <button 
-              type="submit" 
-              className="bg-black text-white px-8 py-2 rounded hover:bg-[#ccff00] hover:text-black transition-colors border border-gray-700"
-            >
-              Submit
-            </button>
-          </div>
-        </form>
-
-        <div className="grid grid-cols-3 gap-6">
-          {users.map((user, index) => (
-            <div key={index} className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-10 h-10 rounded-full bg-[#ccff00] text-black flex items-center justify-center font-bold">
-                  {user.name[0].toUpperCase()}
-                </div>
-                <h3 className="text-black font-semibold">{user.name}</h3>
-              </div>
+            {/* Submit Button */}
+            <div className="md:col-span-2 text-right">
+              <button
+                type="submit"
+                className="bg-white text-black font-bold py-2 px-6 rounded-lg hover:bg-[#d4ff00] transition"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
   
-              <div className="space-y-2 text-black">
-                <p><span className="font-semibold">Role:</span> {user.role}</p>
-                <p><span className="font-semibold">Email:</span> {user.email}</p>
-                <p><span className="font-semibold">Phone Number:</span> {user.phoneNumber}</p>
-                <p><span className="font-semibold">Course:</span> {user.course}</p>
-                <p><span className="font-semibold">Status:</span> {user.status}</p>
+      {/* Display Section */}
+      <div className="bg-black py-10">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {details.map((detail, index) => (
+            <div
+              key={index}
+              className="bg-white text-black p-5 rounded-lg shadow-lg relative"
+            >
+              {/* User Initial */}
+              <div className="bg-[#90ff00] text-black font-bold rounded-full w-12 h-12 flex items-center justify-center absolute -top-6 left-5">
+                {detail.name.charAt(0).toUpperCase()}
               </div>
-              
-              <button 
-                onClick={() => handleDelete(user.email)}
-                className="w-full mt-4 bg-red-500 text-white p-2 rounded hover:bg-red-600 transition-colors"
+              <h2 className="text-xl font-bold mb-2 ml-16">{detail.name}</h2>
+              <p>
+                <strong>Role:</strong> {detail.role}
+              </p>
+              <p>
+                <strong>Email:</strong> {detail.email}
+              </p>
+              <p>
+                <strong>Phone Number:</strong> {detail.phone}
+              </p>
+              <p>
+                <strong>Course:</strong> {detail.course}
+              </p>
+              <p>
+                <strong>Status:</strong> {detail.status}
+              </p>
+              <button
+                onClick={() => handleDelete(index)}
+                className="bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mt-4 hover:bg-red-600 transition"
               >
                 Delete
               </button>
@@ -196,8 +189,8 @@ const FormInterface = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
-};
+}
 
-export default FormInterface;
+export default Form;
