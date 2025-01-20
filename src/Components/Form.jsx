@@ -9,8 +9,10 @@ const FormInterface = () => {
     course: '',
     status: 'Unplaced'
   });
+  
 
   const [users, setUsers] = useState([
+
     {
       name: 'Srivasan',
       role: 'Developer',
@@ -34,7 +36,32 @@ const FormInterface = () => {
       phoneNumber: '123-456-7890',
       course: 'React Basics',
       status: 'Placed'
+    },
+    {
+      name: 'anaya',
+      role: 'Designer',
+      email: 'anaya@gmail.com',
+      phoneNumber: '098-765-4321',
+      course: 'UI/UX Design',
+      status: 'Unplaced'
+    },
+    {
+      name: 'priya',
+      role: 'Designer',
+      email: 'priya@gmail.com',
+      phoneNumber: '098-765-4321',
+      course: 'UI/UX Design',
+      status: 'Unplaced'
+    },
+    {
+      name: 'Mohan',
+      role: 'Designer',
+      email: 'mohan@gmail.com',
+      phoneNumber: '098-765-4321',
+      course: 'UI/UX Design',
+      status: 'Unplaced'
     }
+
   ]);
 
   const handleSubmit = (e) => {
@@ -56,9 +83,8 @@ const FormInterface = () => {
 
   return (
     <div className="min-h-screen bg-black p-8">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-2xl font-bold mb-8 text-[#ccff00]">Fill This Form</h1>
-        
+      <div className="max-w-6xl mx-auto"> 
+        <h1 className="text-2xl font-bold mb-8 text-[#ccff00] text-center"> Fill this Form </h1>
         <form onSubmit={handleSubmit} className="mb-12">
           <div className="grid grid-cols-2 gap-6 mb-6">
             <div>
@@ -135,7 +161,7 @@ const FormInterface = () => {
           <div className="flex justify-end">
             <button 
               type="submit" 
-              className="bg-black text-white px-8 py-2 rounded hover:bg-gray-900 transition-colors border border-gray-700"
+              className="bg-black text-white px-8 py-2 rounded hover:bg-[#ccff00] hover:text-black transition-colors border border-gray-700"
             >
               Submit
             </button>
@@ -144,15 +170,15 @@ const FormInterface = () => {
 
         <div className="grid grid-cols-3 gap-6">
           {users.map((user, index) => (
-            <div key={index} className="bg-black border border-gray-800 rounded-lg p-6">
+            <div key={index} className="bg-white border border-gray-200 rounded-lg p-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-10 h-10 rounded-full bg-[#ccff00] text-black flex items-center justify-center font-bold">
                   {user.name[0].toUpperCase()}
                 </div>
-                <h3 className="text-white font-semibold">{user.name}</h3>
+                <h3 className="text-black font-semibold">{user.name}</h3>
               </div>
-              
-              <div className="space-y-2 text-gray-300">
+  
+              <div className="space-y-2 text-black">
                 <p><span className="font-semibold">Role:</span> {user.role}</p>
                 <p><span className="font-semibold">Email:</span> {user.email}</p>
                 <p><span className="font-semibold">Phone Number:</span> {user.phoneNumber}</p>

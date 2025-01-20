@@ -18,10 +18,10 @@ const Footer = () => {
       <Link 
           to="/form" className="text-gray-400 hover:text-gray-200"
         >
-          Form
+          Form   
         </Link>
         <Link to="/Notes" className="text-gray-400 hover:text-gray-200">
-          Notes
+         Notes
         </Link>
       </div>
     </footer>
