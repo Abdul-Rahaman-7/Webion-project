@@ -47,7 +47,7 @@ const UserDetails = [
     email: "geethaangali@example.com",
     phone: "8765432109",
     course: "React Basic",
-    status: "placed",
+    status: "Unplaced",
 
   },
   {
